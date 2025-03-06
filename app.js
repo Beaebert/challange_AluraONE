@@ -1,17 +1,37 @@
-// El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
-const input = document.getElementById("amigo");
-if (input === null || input === "") {
+let Amigo = []; //el array dónde se guardaran los nombres
+//la función que se activa con el boton
+function agregarAmigo() {
+    let inputAmigo = document.getElementById("amigo"); //toma el valor del campo html
+    let nombreAmigo = inputAmigo.value; //el valor tomado se guarda en una variable para luego comparar
+if (nombreAmigo === "") {
     alert ("No ha escrito ningun valor, por favor escriba nuevamente");
-} else if (input.length <= 3) {
-    alert ("El nombre ingresado es muy corto, ingrese nuevamente el nombre");
-} else if (input === ) {
-
+    return;
+}
+    Amigo.push(nombreAmigo); //se lleva el valor al array
+    console.log(Amigo); //muestra el valor en la consola del navegador
+    inputAmigo.value = ""; // "limpio" el espacio en memoria usado por inputAmigo
+    inputAmigo.focus(); //para que permanezca activo el cursor en el input html
+    mostrarAmigo(); //llamado a la siguiente funcion
 }
 
-function sortearLibro() {
-    let libroElegido = parseInt(Math.random() * numeroLimite + 1);
-    let cantidadDeLibrosSorteados = listaDeLibrosSorteados.length;
-    if (cantidadDeLibrosSorteados == numeroLimite) {
-        listaDeLibrosSorteados = [];
+//funcion mostrar, esta fuera del proceso activado por el boton html (la funcion agregar)
+function mostrarAmigo() {
+    let listaDeAmigos = document.getElementById("listaAmigos");
+    listaDeAmigos.innerHTML = "";
+    for (let i = 0; i < Amigo.length; i++) {
+        let element = document.createElement("li");
+        element.textContent = Amigo[i];
+        listaDeAmigos.appendChild(element);
     }
+}
+
+function sortearAmigo() {
+    if (Amigo.length == 0) {
+        alert("No hay amigos para sortear");
+        return;
+    }
+    let resultado = document.getElementById("resultado");
+    let amigoElegido = Amigo [Math.floor (Math.random() * Amigo.length)];
+    resultado.innerHTML = "El amigo elegido es:${amigoElegido}";
+    resultado.textContent = amigoElegido;
 }
