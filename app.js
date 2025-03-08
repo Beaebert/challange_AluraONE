@@ -30,8 +30,10 @@ function sortearAmigo() {
         alert("No hay amigos para sortear");
         return;
     }
-    let resultado = document.getElementById("resultado");
     let amigoElegido = Amigo [Math.floor (Math.random() * Amigo.length)];
-    resultado.innerHTML = "El amigo elegido es:${amigoElegido}";
-    resultado.textContent = amigoElegido;
+    let resultado = document.getElementById("resultado");
+    resultado.innerHTML = `El amigo elegido es: ${amigoElegido}`;
+
+    let limpiarLista = document.getElementById("listaAmigos");
+    limpiarLista.innerHTML = "";
 }
